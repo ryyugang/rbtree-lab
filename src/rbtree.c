@@ -241,7 +241,18 @@ node_t *rbtree_find(const rbtree *t, const key_t key) {
 
 node_t *rbtree_min(const rbtree *t) {
   printf ("----------rbtree_min in----------, \n");
-  return t->root;
+  node_t *tmp = t -> root;
+  if (tmp == t -> nil)
+  {
+    return NULL;
+  }
+
+  while (tmp -> left != t -> nil)
+  {
+    tmp = tmp -> left;
+  }
+
+  return tmp;
 }
 
 node_t *rbtree_min_subtree(const rbtree *t, node_t *root) {
@@ -250,7 +261,7 @@ node_t *rbtree_min_subtree(const rbtree *t, node_t *root) {
   
   if (root == t -> nil)
   {
-    return root;
+    return NULL;
   }
 
   while (tmp -> left != t -> nil)
@@ -263,7 +274,19 @@ node_t *rbtree_min_subtree(const rbtree *t, node_t *root) {
 
 node_t *rbtree_max(const rbtree *t) {
   printf ("----------rbtree_max in----------, \n");
-  return t->root;
+  node_t *tmp = t -> root;
+
+  if (tmp == t -> nil)
+  {
+    return NULL;
+  }
+
+  while (tmp -> right != t -> nil)
+  {
+    tmp = tmp -> right;
+  }
+
+  return tmp;
 }
 
 int rbtree_erase(rbtree *t, node_t *p) {
@@ -420,6 +443,18 @@ void delete_fixup(rbtree *t, node_t *x) {
 
 int rbtree_to_array(const rbtree *t, key_t *arr, const size_t n) {
   printf ("----------rbtree_to_array in----------, \n");
+  node_t *tmp;
+
+  for (int i=0; i < n; i++)
+  {
+    tmp = rbtree_min(t);
+    if (tmp == NULL)
+    {
+      return -1;
+    }
+    arr[i] = tmp -> key;
+    rbtree_erase(t, tmp);
+  }
   return 0;
 }
 
