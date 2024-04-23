@@ -6,6 +6,7 @@ void rbtree_to_print(node_t *t, node_t *nil);
 
 int main(int argc, char *argv[])
 {
+    // test array
     const key_t arr[] = {10, 5, 8, 34, 67, 23, 156, 24, 2, 12, 24, 36, 990, 25};
     const size_t n = sizeof(arr) / sizeof(arr[0]);
     rbtree *t = new_rbtree();
@@ -15,6 +16,7 @@ int main(int argc, char *argv[])
     rbtree_to_print(t->root, t->nil);
     return 0;
 
+    // test 1 ~ 15
     // rbtree *t = new_rbtree();
     // for (int i = 1; i <= 15; i ++) {
     //     rbtree_insert(t, i);

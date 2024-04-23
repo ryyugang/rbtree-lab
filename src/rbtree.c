@@ -39,6 +39,7 @@ void delete_node(rbtree *t, node_t *node) {
   node = NULL;
 }
 
+
 void delete_rbtree(rbtree *t) {
   printf ("----------delete_rbtree in----------, \n");
   if (t == NULL)
@@ -457,6 +458,24 @@ int rbtree_to_array(const rbtree *t, key_t *arr, const size_t n) {
   }
   return 0;
 }
+
+// todo : using inorder
+// int rbtree_to_array(const rbtree *t, key_t *arr, const size_t n) {
+//   printf ("----------rbtree_to_array in----------, \n");
+//   node_t *tmp = t -> root;
+//   if (tmp == t -> nil)
+//   {
+//     return;
+//   }
+//   for (int i = 0; i < n; i++)
+//   {
+//     while (tmp != NULL)
+//     {
+//       tmp = tmp -> left;
+//     }
+
+//   }
+// }
 
 void rbtree_to_print(node_t *t, node_t *nil)
 {
